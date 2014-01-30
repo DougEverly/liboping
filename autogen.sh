@@ -1,6 +1,11 @@
 #!/bin/sh
 
-glibtoolize
+case `uname` in
+  Darwin*)
+    glibtoolize ;;
+  *)
+    libtoolize ;;
+esac
 aclocal -I m4
 autoheader
 automake --add-missing
